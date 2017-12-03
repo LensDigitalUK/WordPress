@@ -15,5 +15,6 @@ If you would like to contribute, please send us a PR.
 * [Creating Pages - WordPress Codex](https://codex.wordpress.org/Pages)
 
 ## Plugins
+
 ###Yoast SEO
 * [Beginners Guide](https://yoast.com/beginners-guide-yoast-seo/)
