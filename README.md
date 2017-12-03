@@ -16,5 +16,5 @@ If you would like to contribute, please send us a PR.
 
 ## Plugins
 
-###Yoast SEO
+### Yoast SEO
 * [Beginners Guide](https://yoast.com/beginners-guide-yoast-seo/)
