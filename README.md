@@ -7,8 +7,8 @@ The obvious place to start for anything Wordpress is the [WordPress Codex](https
 If you would like to contribute, please send us a PR. 
 
 ## What is WordPress
-* [Wikipedia](https://en.wikipedia.org/wiki/WordPress)
-* [WordPress Codex](https://codex.wordpress.org/WordPress_Features)
+* [WordPress - Wikipedia](https://en.wikipedia.org/wiki/WordPress)
+* [WordPress Features - WordPress Codex](https://codex.wordpress.org/WordPress_Features)
 
 ## Creating Content
 * [Creating Posts - WordPress Codex](https://codex.wordpress.org/Posts)
