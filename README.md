@@ -10,6 +10,6 @@ If you would like to contribute, please send us a PR.
 * [Wikipedia](https://en.wikipedia.org/wiki/WordPress)
 * [WordPress Codex](https://codex.wordpress.org/WordPress_Features)
 
-## End-User Resources
+## Creating Content
 
-## Developer Resources
+## Plugins
