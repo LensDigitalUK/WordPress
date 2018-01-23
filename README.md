@@ -9,6 +9,7 @@ If you would like to contribute, please send us a PR.
 ## What is WordPress
 * [WordPress - Wikipedia](https://en.wikipedia.org/wiki/WordPress)
 * [WordPress Features - WordPress Codex](https://codex.wordpress.org/WordPress_Features)
+* [WordPress Showcase](https://wordpress.org/showcase)
 
 ## Creating Content
 * [Creating Posts - WordPress Codex](https://codex.wordpress.org/Posts)
