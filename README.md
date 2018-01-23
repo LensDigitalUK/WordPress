@@ -11,6 +11,11 @@ If you would like to contribute, please send us a PR.
 * [WordPress Features - WordPress Codex](https://codex.wordpress.org/WordPress_Features)
 * [WordPress Showcase](https://wordpress.org/showcase)
 
+## WordPress Basics
+* [WordPress Glossary of Terms](https://www.joyfullymad.com/wordpress-glossary-of-terms/)
+* [WordPress 101](https://www.melissacarterdesign.com/wordpress-101/)
+* [Understanding the WP Dashboard](https://www.lindsayhumes.com/wordpress-dashboard-settings/)
+
 ## Creating Content
 * [Creating Posts - WordPress Codex](https://codex.wordpress.org/Posts)
 * [Creating Pages - WordPress Codex](https://codex.wordpress.org/Pages)
@@ -19,3 +24,4 @@ If you would like to contribute, please send us a PR.
 
 ### Yoast SEO
 * [Beginners Guide](https://yoast.com/beginners-guide-yoast-seo/)
+* [How to use Yoast SEO](https://www.lindsayhumes.com/yoast-seo/)
