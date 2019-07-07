@@ -1,24 +1,24 @@
 :root {
-  --main-bg-color: #484848;
-  --main-txt-color: white; 
+  --menu-bg-color: #484848;
+  --menu-txt-color: white; 
 }
 
-.primaryMenu ul {
+#menu-primary-menu ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: var(--main-bg-color);
+  background-color: var(--menu-bg-color);
   text-align: center;
   padding-top: 30px;
   padding-bottom: 30px;
 }
-.primaryMenu li {
+#menu-primary-menu li {
   display: inline;
 }
-.primaryMenu li a {
+#menu-primary-menu li a {
   display: inline-block;
-  color: var(--main-txt-color);
+  color: var(--menu-txt-color);
   font-weight: 400;
   font-size: 1.125rem;
   text-align: center;
@@ -26,6 +26,6 @@
   margin-right: 8.25px;
   text-decoration: none;
 }
-.primaryMenu li a:hover {
-  border-bottom: var(--main-txt-color) 1px solid;
+#menu-primary-menu li a:hover {
+  border-bottom: var(--menu-txt-color) 1px solid;
 }
