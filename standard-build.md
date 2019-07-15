@@ -8,6 +8,8 @@ Theme: Create child theme - https://wpastra.com/child-theme-generator/
 
 Plugin: Headers and Footers for Elementor - https://en-gb.wordpress.org/plugins/header-footer-elementor/
 
+Plugin: Clever Mega Menu for Elementor - https://wordpress.org/plugins/clever-mega-menu-for-elementor/
+
 Plugin: WordFence - https://en-gb.wordpress.org/plugins/wordfence/
 
 Plugin: Yoast SEO - https://en-gb.wordpress.org/plugins/wordpress-seo/
