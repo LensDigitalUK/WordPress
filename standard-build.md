@@ -10,6 +10,8 @@ Plugin: Headers and Footers for Elementor - https://en-gb.wordpress.org/plugins/
 
 Plugin: Clever Mega Menu for Elementor - https://wordpress.org/plugins/clever-mega-menu-for-elementor/
 
+Plugin: Central Colour Palette - https://en-gb.wordpress.org/plugins/kt-tinymce-color-grid/
+
 Plugin: WordFence - https://en-gb.wordpress.org/plugins/wordfence/
 
 Plugin: Yoast SEO - https://en-gb.wordpress.org/plugins/wordpress-seo/
