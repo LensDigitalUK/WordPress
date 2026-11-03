@@ -1,9 +1,16 @@
 <?php
 /**
  * Plugin Name: Delivery Area Checker
- * Description: Adds a postcode checker that verifies whether free delivery is offered in a selected WooCommerce shipping zone.
- * Version: 1.0.0
+ * Plugin URI: https://github.com/LensDigitalUK/WordPress/tree/master/Plugins/Delivery-Area-Checker
+ * Description: Adds a UK postcode checker that verifies whether free delivery is offered in a selected WooCommerce shipping zone.
+ * Version: 1.0.1
  * Author: Lens Digital
+ * Author URI: https://wearelens.co.uk/
+ * License: GPL-2.0-or-later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Requires at least: 6.5
+ * Tested up to: 7.1.4
+ * Requires PHP: 7.4
  * Requires Plugins: woocommerce
  * Text Domain: delivery-area-checker
  */
@@ -13,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 final class DAC_Delivery_Area_Checker {
-	const VERSION = '1.0.0';
+	const VERSION = '1.0.1';
 	const OPTION  = 'dac_settings';
 	const NONCE   = 'dac_check_postcode';
 
@@ -61,9 +68,16 @@ final class DAC_Delivery_Area_Checker {
 
 	public function register_settings() {
 		register_setting( 'dac_settings_group', self::OPTION, array( $this, 'sanitize_settings' ) );
+		add_filter(
+			'option_page_capability_dac_settings_group',
+			function() {
+				return 'manage_woocommerce';
+			}
+		);
 	}
 
 	public function sanitize_settings( $input ) {
+		$input    = is_array( $input ) ? $input : array();
 		$defaults = $this->defaults();
 		$output   = array();
 		$output['zone_id'] = isset( $input['zone_id'] ) ? absint( $input['zone_id'] ) : 0;
@@ -173,6 +187,9 @@ final class DAC_Delivery_Area_Checker {
 			wp_send_json_error( array( 'message' => __( 'WooCommerce is not active.', 'delivery-area-checker' ) ), 400 );
 		}
 		$postcode = isset( $_POST['postcode'] ) ? wc_clean( wp_unslash( $_POST['postcode'] ) ) : '';
+		if ( strlen( $postcode ) > 12 ) {
+			wp_send_json_error( array( 'message' => __( 'Please enter a valid UK postcode.', 'delivery-area-checker' ) ), 400 );
+		}
 		$zone_id = isset( $_POST['zone_id'] ) ? absint( $_POST['zone_id'] ) : 0;
 		$postcode = wc_format_postcode( $postcode, 'GB' );
 		if ( ! $postcode || ! WC_Validation::is_postcode( $postcode, 'GB' ) ) {
