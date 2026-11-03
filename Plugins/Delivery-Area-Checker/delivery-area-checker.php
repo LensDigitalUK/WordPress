@@ -194,8 +194,8 @@ final class DAC_Delivery_Area_Checker {
 		if ( ! class_exists( 'WooCommerce' ) ) {
 			wp_send_json_error( array( 'message' => __( 'WooCommerce is not active.', 'delivery-area-checker' ) ), 400 );
 		}
-		$raw_postcode = isset( $_POST['postcode'] ) && is_string( $_POST['postcode'] ) ? sanitize_text_field( wp_unslash( $_POST['postcode'] ) ) : '';
-		$postcode = wc_clean( $raw_postcode );
+		$postcode = isset( $_POST['postcode'] ) ? sanitize_text_field( wp_unslash( $_POST['postcode'] ) ) : '';
+		$postcode = wc_clean( $postcode );
 		if ( strlen( $postcode ) > 12 ) {
 			wp_send_json_error( array( 'message' => __( 'Please enter a valid UK postcode.', 'delivery-area-checker' ) ), 400 );
 		}
