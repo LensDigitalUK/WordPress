@@ -1,5 +1,4 @@
 === Delivery Area Checker ===
-Contributors:
 Tags: woocommerce, shipping, postcode, free shipping, delivery
 Requires at least: 6.5
 Tested up to: 7.1.4
@@ -78,6 +77,10 @@ No. Postcode validation and shipping-zone matching are handled by WooCommerce.
 = Does it work with Elementor? =
 
 Yes. Add the shortcode using Elementor's Shortcode widget.
+
+== Support ==
+
+For help using the plugin or to report a bug, please open an issue in the [GitHub repository](https://github.com/LensDigitalUK/WordPress/issues).
 
 == Changelog ==
 
