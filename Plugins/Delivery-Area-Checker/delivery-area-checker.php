@@ -6,7 +6,7 @@
  * Version: 1.0.1
  * Author: Lens Digital
  * Author URI: https://wearelens.co.uk/
- * License: GPL-2.0-or-later
+ * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Requires at least: 6.5
  * Requires PHP: 7.4
@@ -194,7 +194,8 @@ final class DAC_Delivery_Area_Checker {
 		if ( ! class_exists( 'WooCommerce' ) ) {
 			wp_send_json_error( array( 'message' => __( 'WooCommerce is not active.', 'delivery-area-checker' ) ), 400 );
 		}
-		$postcode = isset( $_POST['postcode'] ) && is_string( $_POST['postcode'] ) ? wc_clean( wp_unslash( $_POST['postcode'] ) ) : '';
+		$raw_postcode = isset( $_POST['postcode'] ) && is_string( $_POST['postcode'] ) ? sanitize_text_field( wp_unslash( $_POST['postcode'] ) ) : '';
+		$postcode = wc_clean( $raw_postcode );
 		if ( strlen( $postcode ) > 12 ) {
 			wp_send_json_error( array( 'message' => __( 'Please enter a valid UK postcode.', 'delivery-area-checker' ) ), 400 );
 		}
