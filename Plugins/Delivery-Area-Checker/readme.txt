@@ -1,7 +1,6 @@
 === Delivery Area Checker ===
 Tags: woocommerce, shipping, postcode, free shipping, delivery
 Requires at least: 6.5
-Tested up to: 7.1.4
 Requires PHP: 7.4
 Stable tag: 1.0.1
 License: GPL-2.0-or-later
