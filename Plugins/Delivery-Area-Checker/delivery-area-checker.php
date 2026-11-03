@@ -42,7 +42,7 @@ final class DAC_Delivery_Area_Checker {
 
 	private function defaults() {
 		return array(
-			'zone_id'         => '',
+			'zone_id'         => 0,
 			'success_message' => __( 'Great news! Free delivery is available to your postcode.', 'delivery-area-checker' ),
 			'failure_message' => __( 'Sorry, free delivery is not currently available in your area.', 'delivery-area-checker' ),
 			'button_text'     => __( 'Check postcode', 'delivery-area-checker' ),
@@ -86,13 +86,19 @@ final class DAC_Delivery_Area_Checker {
 		$output['button_text'] = isset( $input['button_text'] ) && is_scalar( $input['button_text'] ) ? sanitize_text_field( $input['button_text'] ) : $defaults['button_text'];
 		$output['button_color'] = isset( $input['button_color'] ) && is_scalar( $input['button_color'] ) ? sanitize_hex_color( $input['button_color'] ) : $defaults['button_color'];
 		$output['text_color'] = isset( $input['text_color'] ) && is_scalar( $input['text_color'] ) ? sanitize_hex_color( $input['text_color'] ) : $defaults['text_color'];
-		if ( ! $output['button_color'] ) $output['button_color'] = $defaults['button_color'];
-		if ( ! $output['text_color'] ) $output['text_color'] = $defaults['text_color'];
+		if ( ! $output['button_color'] ) {
+			$output['button_color'] = $defaults['button_color'];
+		}
+		if ( ! $output['text_color'] ) {
+			$output['text_color'] = $defaults['text_color'];
+		}
 		return $output;
 	}
 
 	public function settings_page() {
-		if ( ! current_user_can( 'manage_woocommerce' ) ) return;
+		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+			return;
+		}
 		if ( ! class_exists( 'WooCommerce' ) ) {
 			echo '<div class="wrap"><h1>' . esc_html__( 'Delivery Area Checker', 'delivery-area-checker' ) . '</h1><p>' . esc_html__( 'WooCommerce must be installed and active to use this plugin.', 'delivery-area-checker' ) . '</p></div>';
 			return;
@@ -144,7 +150,9 @@ final class DAC_Delivery_Area_Checker {
 	}
 
 	public function render_shortcode( $atts ) {
-		if ( ! class_exists( 'WooCommerce' ) ) return '';
+		if ( ! class_exists( 'WooCommerce' ) ) {
+			return '';
+		}
 		$settings = $this->settings();
 		$atts = shortcode_atts( array( 'zone' => '' ), $atts, 'delivery_area_checker' );
 		$zone_attribute = is_scalar( $atts['zone'] ) ? (string) $atts['zone'] : '';
