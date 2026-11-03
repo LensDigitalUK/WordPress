@@ -80,12 +80,12 @@ final class DAC_Delivery_Area_Checker {
 		$input    = is_array( $input ) ? $input : array();
 		$defaults = $this->defaults();
 		$output   = array();
-		$output['zone_id'] = isset( $input['zone_id'] ) ? absint( $input['zone_id'] ) : 0;
-		$output['success_message'] = isset( $input['success_message'] ) ? sanitize_text_field( $input['success_message'] ) : $defaults['success_message'];
-		$output['failure_message'] = isset( $input['failure_message'] ) ? sanitize_text_field( $input['failure_message'] ) : $defaults['failure_message'];
-		$output['button_text'] = isset( $input['button_text'] ) ? sanitize_text_field( $input['button_text'] ) : $defaults['button_text'];
-		$output['button_color'] = isset( $input['button_color'] ) ? sanitize_hex_color( $input['button_color'] ) : $defaults['button_color'];
-		$output['text_color'] = isset( $input['text_color'] ) ? sanitize_hex_color( $input['text_color'] ) : $defaults['text_color'];
+		$output['zone_id'] = isset( $input['zone_id'] ) && is_scalar( $input['zone_id'] ) ? absint( $input['zone_id'] ) : 0;
+		$output['success_message'] = isset( $input['success_message'] ) && is_scalar( $input['success_message'] ) ? sanitize_text_field( $input['success_message'] ) : $defaults['success_message'];
+		$output['failure_message'] = isset( $input['failure_message'] ) && is_scalar( $input['failure_message'] ) ? sanitize_text_field( $input['failure_message'] ) : $defaults['failure_message'];
+		$output['button_text'] = isset( $input['button_text'] ) && is_scalar( $input['button_text'] ) ? sanitize_text_field( $input['button_text'] ) : $defaults['button_text'];
+		$output['button_color'] = isset( $input['button_color'] ) && is_scalar( $input['button_color'] ) ? sanitize_hex_color( $input['button_color'] ) : $defaults['button_color'];
+		$output['text_color'] = isset( $input['text_color'] ) && is_scalar( $input['text_color'] ) ? sanitize_hex_color( $input['text_color'] ) : $defaults['text_color'];
 		if ( ! $output['button_color'] ) $output['button_color'] = $defaults['button_color'];
 		if ( ! $output['text_color'] ) $output['text_color'] = $defaults['text_color'];
 		return $output;
@@ -147,7 +147,8 @@ final class DAC_Delivery_Area_Checker {
 		if ( ! class_exists( 'WooCommerce' ) ) return '';
 		$settings = $this->settings();
 		$atts = shortcode_atts( array( 'zone' => '' ), $atts, 'delivery_area_checker' );
-		$zone_id = ( '' !== $atts['zone'] ) ? absint( $atts['zone'] ) : absint( $settings['zone_id'] );
+		$zone_attribute = is_scalar( $atts['zone'] ) ? (string) $atts['zone'] : '';
+		$zone_id = ( '' !== $zone_attribute ) ? absint( $zone_attribute ) : absint( $settings['zone_id'] );
 
 		wp_enqueue_style( 'dac-delivery-area-checker' );
 		wp_enqueue_script( 'dac-delivery-area-checker' );
@@ -186,11 +187,11 @@ final class DAC_Delivery_Area_Checker {
 		if ( ! class_exists( 'WooCommerce' ) ) {
 			wp_send_json_error( array( 'message' => __( 'WooCommerce is not active.', 'delivery-area-checker' ) ), 400 );
 		}
-		$postcode = isset( $_POST['postcode'] ) ? wc_clean( wp_unslash( $_POST['postcode'] ) ) : '';
+		$postcode = isset( $_POST['postcode'] ) && is_string( $_POST['postcode'] ) ? wc_clean( wp_unslash( $_POST['postcode'] ) ) : '';
 		if ( strlen( $postcode ) > 12 ) {
 			wp_send_json_error( array( 'message' => __( 'Please enter a valid UK postcode.', 'delivery-area-checker' ) ), 400 );
 		}
-		$zone_id = isset( $_POST['zone_id'] ) ? absint( $_POST['zone_id'] ) : 0;
+		$zone_id = isset( $_POST['zone_id'] ) && is_scalar( $_POST['zone_id'] ) ? absint( wp_unslash( $_POST['zone_id'] ) ) : 0;
 		$postcode = wc_format_postcode( $postcode, 'GB' );
 		if ( ! $postcode || ! WC_Validation::is_postcode( $postcode, 'GB' ) ) {
 			wp_send_json_error( array( 'message' => __( 'Please enter a valid UK postcode.', 'delivery-area-checker' ) ), 400 );
